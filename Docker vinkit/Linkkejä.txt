@@ -1,0 +1,11 @@
+Learn Docker Online Github sivu
+https://github.com/learndocker
+
+Docker Windows Containers
+https://hub.docker.com/u/microsoft/
+
+
+Docker Captain Stephen Scherer
+
+https://stefanscherer.github.io/
+https://github.com/StefanScherer

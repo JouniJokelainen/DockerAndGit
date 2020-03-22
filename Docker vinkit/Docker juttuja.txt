@@ -1,0 +1,77 @@
+Imagen teko ilman tägiä kun työkansiossa on Dockerfile tiedosto
+
+docker image build .
+docker run imageid (edellisestä komennosta)
+
+Imagen teko, tägääminen ja containerin suorittaminen:
+
+- docker image build -t myalpine:latest .
+- docker container run -it myalpine:latest
+
+
+Kaikkien containerian listaaminen
+
+- docker container ls -a
+
+Imagen nimeäminen:
+
+- docker image tag myalpine:latest  dockerhubkäyttäjänimi/myalpine:latest
+
+imgejen lataaminen Githubiin:
+
+docker image push:
+
+HUOM: pitää olla kirjautuneena Dockerhubiin
+
+- docker image push dockerhubkäyttäjänimi/myalpine:latest
+
+Containerin suorittaminen interaktiivisesti:
+
+- docker conatainer run --name C1 -it alpine:latest sh
+
+i = interaktiivinen (standard in) eli syötettä otetaan vastaan ja tulostetaan näytölle mutta prompti on vaillinnainen
+t = ottaa käyttöön sudo tty:n eli prompti tulostuu kunnolla
+
+Irottautuminen containerista (detach)
+
+- CTRL + P CTRL + Q
+
+Containerin suorittaminen suoraan detach moodissa
+
+- docker container run --name C1 -d nginx:latest
+
+Kiinnittyminen containeriin (attach), vaatii -it parametrien käytön
+
+- docker container attach C1
+
+Ohjelman suorittaminen containerissa containerin ulkopuolelta
+
+- docker container exec C1 cat /etc/nginx/nginx.conf (tulostaa näytölle)
+- docker container exec -it C1 sh (ottaa kiinni conaineriin sh shelliin)
+
+
+Containerin sammuttaminen:
+
+docker container run --name C1 nginx:latest
+
+- docker container stop C1 (lähettää SIGTERM signaalin jonka ansiosta prosessin PID1 tulisi itse terminoitua -> container terminoituu
+
+- docker container kill C1 (lähetää SIGTERM signaalin joka lopettaa prosessin joka tapauksessa)
+
+Hakemiuston mounttaaminen containeriin (bind mount)read only
+
+- docker container run --v (tai --volume) hakemisto/mikä/mountataan:hakemiston/minne/mountataan:ro -p 80:80 nginx/latest
+
+Mount komennon lyhentäminen:
+
+- docker container run --rm -v ${PWD}:/var/www/html:ro -p 80:80 jounijokelainen/nginx:latest
+
+Mount vs. volume tyyppinen bind
+docker container run --volume "$(pwd)/html":/usr/share/nginx/html:ro -p 80:80 nginx:latest
+docker container run --mount type=bind,src="$(pwd)/html",dst=/usr/share/nginx/html,readonly -p 80:80 nginx:latest
+
+Mikä on volume: https://blog.container-solutions.com/understanding-volumes-docker
+https://docs.docker.com/storage/volumes/
+
+
+

@@ -1,0 +1,37 @@
+Kuinka luoda Git repository paikallisesti ja puskea se Githubiin
+
+Käyttöönottaminen
+
+1. Asenna git: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
+
+2. Asetetaan Git käyttäjätiedot paikalliseen Git sovellukseen.
+git config --global user.name "King Kong" 
+git config --global user.email "king-kong@gmail.com"
+
+3. Tarkastetaan edellä asetetut asetukset 
+git config --list
+
+1. Siirry projektikansioon ja alusta Git komennolla 
+gitinit
+
+2. Tarkasta tiedostot ja kansiot joista git tietää komennolla
+git status
+
+3. Uusien ja muuttuneiden tiedostojen lisääminen indeksiin/staging areaan
+git add . = lisää kaikki  muuttuneet tiedostot
+git add tiedosto1.txt = lisää yhden tiedoston
+git add tiedosto1.txt tiedosto2.txt = lisää useamman tiedoston
+
+HUOM On myös komennot jotka lisäävät tiedostot myös git juurikansion alikansiosta (näyttää kyllä siltä että myös git . tekee sen?)
+git add --all
+git add -a
+
+4. Tarkastetaan indeksiin lisääminen
+git status
+
+5. Indeksistä/stagin arealta voi myös poistaa tiedostoja
+git rm --cached my-file.ts
+
+
+
+
