@@ -30,7 +30,63 @@ git add -a
 git status
 
 5. Indeksistä/stagin arealta voi myös poistaa tiedostoja
-git rm --cached my-file.ts
+git rm --cached my-file.ts TAI git reset another-file.js
+
+6. Tehdään commit
+git commit -m "Add three files"
+
+7. Indeksiin lisääminen ja commit voidaan tehdä yhdellä komennolla
+git commit -a -m "Do something once more"
+
+8. Tiedoston lisääminen viimeisimpään committiin (head) tai koko viimesimmän commitin peruminen
+
+Korjaaminen:
+git add file-i-forgot-to-add.html
+git commit --amend -m "Add the remaining file"
+
+Peruminen:
+git reset --soft HEAD^
+
+Remote repositoryn GitHub käyttö
+
+1. luodaan tarvittaessa uusi Github tunnus ja sinne repository sekä kopioidaan .git linkki talteen
+
+2. Liitetään lokaali repository Githubiin komennolla
+git remote add origin https://github.com/YourUsername/some-small-app.git
+
+3. Pusketaan logaalissa repositoryssä oleva koodi Githubiin komennolla
+Koodi liitetään master haaraan
+HUOM: -u parametrin ansiosta jatkossa riittää pelkkä git push komento
+git push -u origin master
+
+4. SSH käyttö Github push komennon kanssa
+Edellisen kohdan ongelma on että joka kerta kun annetaan git push komento, joudutaan antamaan salasana ja käyttäjätunnus
+Tätä ennen kuitenkin tulee SSH ottaa käyttöön: https://help.github.com/en/github/authenticating-to-github/connecting-to-github-with-ssh
+
+git remote add origin git@github.com:YourUsername/your-app.git
+
+5. Tarkastetaan Githubissa olevat repositoryt
+git remote -v
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
