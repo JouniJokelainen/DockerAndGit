@@ -140,7 +140,9 @@ Haaraan tehtyjen muutosten yhdistäminen master branchiin
     git branch -D *haaranimi* = jos haaraa ei ole mergattu ei upattu epärepositoryyn
 
 
+Viimeisimmän muutokset peruminen
 
+git checkout -- *tiedostonnimi*
 
 
 
