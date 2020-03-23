@@ -136,13 +136,10 @@ Haaraan tehtyjen muutosten yhdistäminen master branchiin
     git merge *uudenbranchin_nimi* = yhdistetään muutokset *uudenbranchin_nimi* branchista
 
 
-<<<<<<< HEAD
     git branch -d *haarannimi* = jos haara on yhdistetty master branchiin ja upattu etärepositoryy
     git branch -D *haaranimi* = jos haaraa ei ole mergattu ei upattu epärepositoryyn
 
 TÄTÄ TEKSTIÄ EI HALUTA -- BUGIA
-=======
->>>>>>> parent of 2e9089a... palaa tähän
 
 
 
