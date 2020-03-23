@@ -111,7 +111,23 @@ HAARAT ELI BRANCHIT
 
 1. tarkasta haara jossa toimitaan
 
-git branch
+    git branch
+
+Luo uusi haara
+
+    git branch *uudenbranchin_nimi*
+
+Vaihda uuteen branchiin
+
+    git checkout *uudenbranchin_nimi*
+
+Luo uusi haara ja vaihda siihen samantien
+
+    git checkout -b *uudenbranchin_nimi*
+
+
+
+
 
 
 
