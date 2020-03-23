@@ -70,6 +70,10 @@ git remote -v
 
 Kokonaisen Git repositoryn kloonaaminen omalle koneelle
 
+HUOM: Windows 10:n virusten ja uhkien torjunta estää gitin toiminnan Documents kansiossa
+
+git clone https://github.com/*Gitkäyttäjänimi*/*repositoryn_nimi*.git
+
 Cloning a repository is very different from pulling from a repository. If you clone a remote repository, Git will:
 
 - Download the entire project into a specified directory; and
