@@ -12,7 +12,7 @@ git config --global user.email "king-kong@gmail.com"
 git config --list
 
 1. Siirry projektikansioon ja alusta Git komennolla 
-gitinit
+git init
 
 2. Tarkasta tiedostot ja kansiot joista git tietää komennolla
 git status
