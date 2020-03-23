@@ -45,6 +45,7 @@ git add file-i-forgot-to-add.html
 git commit --amend -m "Add the remaining file"
 
 Peruminen:
+
 git reset --soft HEAD^
 
 Remote repositoryn GitHub käyttö
@@ -52,11 +53,13 @@ Remote repositoryn GitHub käyttö
 1. luodaan tarvittaessa uusi Github tunnus ja sinne repository sekä kopioidaan .git linkki talteen
 
 2. Liitetään lokaali repository Githubiin komennolla
+
 git remote add origin https://github.com/YourUsername/some-small-app.git
 
 3. Pusketaan logaalissa repositoryssä oleva koodi Githubiin komennolla
 Koodi liitetään master haaraan
 HUOM: -u parametrin ansiosta jatkossa riittää pelkkä git push komento
+
 git push -u origin master
 
 4. SSH käyttö Github push komennon kanssa
@@ -66,9 +69,10 @@ Tätä ennen kuitenkin tulee SSH ottaa käyttöön: https://help.github.com/en/g
 git remote add origin git@github.com:YourUsername/your-app.git
 
 5. Tarkastetaan Githubissa olevat repositoryt
+
 git remote -v
 
-Kokonaisen Git repositoryn kloonaaminen omalle koneelle
+Kokonaisen Git repositoryn kloonaaminen omalle koneelle git clone komennolla
 
 HUOM: Windows 10:n virusten ja uhkien torjunta estää gitin toiminnan Documents kansiossa
 
@@ -80,9 +84,16 @@ Cloning a repository is very different from pulling from a repository. If you cl
 - Create a remote repository called origin and point it to the URL you pass.
 
 
-1.
+KLOONAAMINEN
+
+Kopio koko etärepository ja luo kansion paikalliselle koneelle
+Asettaa etäkohteen automaattisesti (ei tarvitse tehdä git remote add origin komentoa)
+
 git clone git@github.com:YourUsername/your-app.git
-git clone git@github.com:YourUsername/your-app.git this-name-is-much-better
+git clone git@github.com:YourUsername/your-app.git this-name-is-much-better (jos halutaan muuttaa paikallisen hakemiston nimi)
+
+MUUTOSTEN VETÄMINEN (PULL)
+Vetää vain muutokset etärepositorystä
 
 Muuttuneiden tiedostojen vetäminen/pull remote repositorystä
 1. git pull
@@ -92,7 +103,11 @@ When you run the "pull" command, Git will:
 - Pull changes in the current branch made by other developers; and
 - Synchronize your local repository with the remote repository.
 
+Muuttuneiden tiedostojen puskeminen Git hubiin git push komennolla
 
+1. git push
+
+HAARAT ELI BRANCHIT
 
 
 
