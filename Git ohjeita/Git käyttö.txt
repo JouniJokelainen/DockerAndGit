@@ -139,7 +139,6 @@ Haaraan tehtyjen muutosten yhdistäminen master branchiin
     git branch -d *haarannimi* = jos haara on yhdistetty master branchiin ja upattu etärepositoryy
     git branch -D *haaranimi* = jos haaraa ei ole mergattu ei upattu epärepositoryyn
 
-TÄTÄ TEKSTIÄ EI HALUTA -- BUGIA
 
 
 

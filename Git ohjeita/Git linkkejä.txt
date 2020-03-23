@@ -1,3 +1,6 @@
+Hyvä suomenkielinen ohjesivusto
+https://tkt-lapio.github.io/git/
+
 Gitin oma aloitusohje sivusto
 https://docs.gitlab.com/ee/gitlab-basics/start-using-git.html
 
