@@ -1,3 +1,6 @@
+Gitin oma aloitusohje sivusto
+https://docs.gitlab.com/ee/gitlab-basics/start-using-git.html
+
 Git asentaminen
 https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
 
