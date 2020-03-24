@@ -30,3 +30,6 @@ https://www.notion.so/Introduction-to-Git-ac396a0697704709a12b6a0e545db049
 Guit GUI´s
 https://git-scm.com/downloads/guis
 
+Git push -u merkitys
+https://stackoverflow.com/questions/5697750/what-exactly-does-the-u-do-git-push-u-origin-master-vs-git-push-origin-ma
+
