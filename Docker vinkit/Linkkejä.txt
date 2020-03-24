@@ -9,3 +9,6 @@ Docker Captain Stephen Scherer
 
 https://stefanscherer.github.io/
 https://github.com/StefanScherer
+
+# Mikä on volume: https://blog.container-solutions.com/understanding-volumes-docker
+https://docs.docker.com/storage/volumes/
