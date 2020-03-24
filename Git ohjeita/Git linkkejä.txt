@@ -1,35 +1,54 @@
-Hyvä suomenkielinen ohjesivusto
+# Hyvä suomenkielinen ohjesivusto
 https://tkt-lapio.github.io/git/
 
-Gitin oma aloitusohje sivusto
+# Gitin oma aloitusohje sivusto
 https://docs.gitlab.com/ee/gitlab-basics/start-using-git.html
 
-Git asentaminen
+# Git asentaminen
 https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
 
-Most Basic Git Commands with Examples
+# Most Basic Git Commands with Examples
 https://rubygarage.org/blog/most-basic-git-commands-with-examples
 
-Git for dummies
+# Git for dummies
 https://dev.to/doylecodes/git-for-dummies-1a2i 
 
-Git simple guide
+# Git simple guide
 https://rogerdudler.github.io/git-guide/ 
 
-Git tutorial for beginners
+# Git tutorial for beginners
 https://product.hubspot.com/blog/git-and-github-tutorial-for-beginners
 
 Udemy Git version control
 https://classroom.udacity.com/courses/ud123
 
-Learn Git In 15 Minutes
+# Learn Git In 15 Minutes
 https://www.youtube.com/watch?v=USjZcfj8yxE&t=494s
-ja siihen liittyvä ohjeistus
+# ja siihen liittyvä ohjeistus
 https://www.notion.so/Introduction-to-Git-ac396a0697704709a12b6a0e545db049
 
-Guit GUI´s
+# Guit GUI´s
 https://git-scm.com/downloads/guis
 
-Git push -u merkitys
+# Git push -u merkitys
 https://stackoverflow.com/questions/5697750/what-exactly-does-the-u-do-git-push-u-origin-master-vs-git-push-origin-ma
+
+# Git commiteissa peruuttaminen hashin mukaan
+Find the specific commit you want to revert all changes to:
+
+$ git log --oneline
+Rollback all changes to that old commit:
+
+$ git checkout be9055b .
+
+Note: The dot (.) after the branch name is mandatory.
+Add the changes to the staging area and commit them:
+
+$ git add -A $ git commit -m "Revert commit: be9055b"
+Once the local rollback is done, you can revert the already pushed commits, by pushing a new revision with the reverted changes to the remote Git repository:
+
+$ git push
+
+# viimeisimmän lisäyksen peruminen jos committia ei vielä ole tehty
+git checkout -- filename
 
