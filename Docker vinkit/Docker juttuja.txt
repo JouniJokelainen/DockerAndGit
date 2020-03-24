@@ -58,19 +58,22 @@ docker container run --name C1 nginx:latest
 
 - docker container kill C1 (lähetää SIGTERM signaalin joka lopettaa prosessin joka tapauksessa)
 
-Hakemiuston mounttaaminen containeriin (bind mount)read only
+# Volumes vs. Bind mounts
+https://4sysops.com/archives/introduction-to-docker-bind-mounts-and-volumes/
+
+# Hakemiston mounttaaminen containeriin (bind mount)read only
 
 - docker container run --v (tai --volume) hakemisto/mikä/mountataan:hakemiston/minne/mountataan:ro -p 80:80 nginx/latest
 
-Mount komennon lyhentäminen:
+# Mount komennon lyhentäminen:
 
 - docker container run --rm -v ${PWD}:/var/www/html:ro -p 80:80 jounijokelainen/nginx:latest
 
-Mount vs. volume tyyppinen bind
+# Mount vs. volume tyyppinen bind
 docker container run --volume "$(pwd)/html":/usr/share/nginx/html:ro -p 80:80 nginx:latest
 docker container run --mount type=bind,src="$(pwd)/html",dst=/usr/share/nginx/html,readonly -p 80:80 nginx:latest
 
-Mikä on volume: https://blog.container-solutions.com/understanding-volumes-docker
+# Mikä on volume: https://blog.container-solutions.com/understanding-volumes-docker
 https://docs.docker.com/storage/volumes/
 
 
