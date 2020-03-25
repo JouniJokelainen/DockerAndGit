@@ -58,6 +58,10 @@ docker container run --name C1 nginx:latest
 
 - docker container kill C1 (lähetää SIGTERM signaalin joka lopettaa prosessin joka tapauksessa)
 
+# Containerin ajaminen siten että portti 80 on avattu
+
+- docker container run -p 80:80 nginx:latest
+
 # Volumes vs. Bind mounts
 https://4sysops.com/archives/introduction-to-docker-bind-mounts-and-volumes/
 Volume tulee luoduksi containerin omaan tiedosto osaan host koneella
