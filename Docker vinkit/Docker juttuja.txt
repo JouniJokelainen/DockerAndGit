@@ -96,3 +96,15 @@ docker container run --rm --mount type=bind,src="C:\temp\Learn Docker Online\ngi
 # volumejen listaaminen ja poistaminen
 - docker volume ls
 - docker volume rm
+
+# Milloin käyttää bindmounttia vs milloin käyttää volumea
+
+bind mounttia: 
+- kun samaa tietoa pitää pystyä käsittelemään sekä containerista että hostista
+- esim. konfiguraatiotiedostot tai koodi
+
+volume:
+- kun halutaan säilyttää containerissa syntyvää dataa
+- kun halutaan jakaa tietoa containereiden välilä
+- varmuuskopiot
+
