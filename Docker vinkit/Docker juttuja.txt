@@ -60,10 +60,17 @@ docker container run --name C1 nginx:latest
 
 # Volumes vs. Bind mounts
 https://4sysops.com/archives/introduction-to-docker-bind-mounts-and-volumes/
+Volume tulee luoduksi containerin omaan tiedosto osaan host koneella
+Bindmount mäppää tietyn hakemiston isäntäkonelta ja vaatii absoluuttisen polun ko. hakemistoon
 
-# Hakemiston mounttaaminen containeriin (bind mount)read only
+# Hakemiston bind-mounttaaminen containeriin (bind mount)read only
 
 - docker container run --v (tai --volume) hakemisto/mikä/mountataan:hakemiston/minne/mountataan:ro -p 80:80 nginx/latest
+
+# Nimetyn volumen luominen
+
+- docker container run -it --volume *volumen_nimi*:/minne_mäpätään_containerissa alpine:latest
+- tulokset voi tarkastaa shellistä df -h komennolla
 
 # Mount komennon lyhentäminen:
 
