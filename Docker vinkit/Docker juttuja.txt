@@ -70,7 +70,14 @@ Bindmount mäppää tietyn hakemiston isäntäkonelta ja vaatii absoluuttisen po
 # Nimetyn volumen luominen
 
 - docker container run -it --volume *volumen_nimi*:/minne_mäpätään_containerissa alpine:latest
+
 - tulokset voi tarkastaa shellistä df -h komennolla
+
+- volumen voi liittää toiseen containeriin myöhemmin sillä volumet eivät poistu vaikka container poistuisikin
+
+# Volumejen automaattinen liittäminen käyttöön tietystä conainerista
+
+- docker container run --volumes-from c1 -it --rm alpine:latest
 
 # Mount komennon lyhentäminen:
 
@@ -83,6 +90,9 @@ docker container run --mount type=bind,src="$(pwd)/html",dst=/usr/share/nginx/ht
 # Mikä on volume: https://blog.container-solutions.com/understanding-volumes-docker
 https://docs.docker.com/storage/volumes/
 
-# Containerin ajaminen siten että liitetään host hakemistossa oleva index.html containerissa pyörivään nginx palvelimeen
+# Containerin ajaminen siten että liitetään (bind-mount) host hakemistossa oleva index.html containerissa pyörivään nginx palvelimeen
 docker container run --rm --mount type=bind,src="C:\temp\Learn Docker Online\nginx\html",destination=/var/www/html,readonly -p 80:80 nginx:latest
 
+# volumejen listaaminen ja poistaminen
+- docker volume ls
+- docker volume rm
