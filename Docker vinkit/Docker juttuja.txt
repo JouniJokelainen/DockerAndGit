@@ -112,3 +112,10 @@ volume:
 - kun halutaan jakaa tietoa containereiden välilä
 - varmuuskopiot
 
+# tiedostojen kopioiminen imageen Dockerfilen avulla
+ - COPY komento Dockerfile ssä kopioi tiedostoja imageen
+ - COPY kopioi määritettävien kansioiden sisällöt ja siinä voidaan käyttää * merkkiä esim. *.html
+ - ADD komento tekee saman mutta se voi kopioida html linkistä esim. ADD ./html.tar.gz /var/www/
+ - ADD http://example.com/index.html /var/www/html/example.html
+kopioitavat tiedostot voidaan ohittaa .dockerignorefile avulla
+
