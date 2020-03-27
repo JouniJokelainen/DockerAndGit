@@ -117,5 +117,13 @@ volume:
  - COPY kopioi määritettävien kansioiden sisällöt ja siinä voidaan käyttää * merkkiä esim. *.html
  - ADD komento tekee saman mutta se voi kopioida html linkistä esim. ADD ./html.tar.gz /var/www/
  - ADD http://example.com/index.html /var/www/html/example.html
-kopioitavat tiedostot voidaan ohittaa .dockerignorefile avulla
+ - kopioitavat tiedostot voidaan ohittaa .dockerignorefile avulla
+ 
+# Container ja verkko
+- docker container run --publish (tai -p) 8080:80 -d nginx:latest (ohjaa kaikki verkkoliitännät)
+- docker container run --publish 127.0.0.1:80:80 -d nginx:latest (uudelleenohjaa ainaostaan localhostin)
+- ip addr (listaa ip asetukset linuxissa/containerissa)
+
+-docker container run -p 80-90:80-90 -d nginx:latest (uudelleen ohjaa kaikki portit väliltä 80-90 portteihin 80-90)
+
 
