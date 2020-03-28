@@ -126,4 +126,16 @@ volume:
 
 -docker container run -p 80-90:80-90 -d nginx:latest (uudelleen ohjaa kaikki portit väliltä 80-90 portteihin 80-90)
 
+# omat docker verkot
+- docker network ls (luo oman verkon)
+- docker network create mynet
+- docker network inspect mynet (näyttää uuden oman verkon ip-alueen ja muut asetukset)
+- docker container run --network mynet --rm -it alpine:latest (luo containerin ja liittää sen mynet verkkoon)
+- ip addr (komennolla voi listata ip osoitteet containerin sisällä)
+- docker network rm mynet (poistaa mynet verkon)
 
+# nimen selvitys
+- dockerissa on containerin sisään rakenttu DNS palvelin
+- cat /etc/resolv.conf (dns asetukset)
+- docker container run --network mynet --name c2 --rm -it --ip 172.18.0.99 alpine:latest (luo containeri uudella ip osoitteella)
+- docker DNS päivittää uuden ip osoitteen DNS:n
