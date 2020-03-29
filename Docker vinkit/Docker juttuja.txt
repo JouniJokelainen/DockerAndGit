@@ -153,9 +153,29 @@ volume:
 - docker container run --network mynet -it alpine:latest (käynnistää container samaan mynet verkkoon kuin edelliset)
 - nslookup webserver (listataan mynet verkossa samalla verkko aliaksella olevaa 3 webserver palvelinta)
 
-# Järjestelmämuuttujat / En vars
+# Järjestelmämuuttujat / En vars -e paranetrilla suoraan run komenossa
 - docker container run --name test -it -e "PS1=\h:\w# " jfahrer/myalpine:latest (muuttaa promptin näyttämään hostnimen ja työkansion)
 - export PS1="\h:\w# " (jos ajettaisiin erillisellä komennolla shellistä)
+
+# Järjestelmämuuttujat Dockerfilessä
+- ENV PS1 "\h\w# " (asettaa promptin)
+- ENV=PS1 "\h\w# " PS2 "\h\w# "  PS3 "\h\w# "  (voidaan asettuaa useampi muuttuja = merkin ja välilyöntien avulla)
+- docker container run -it jounijokelainen/myalpine env (näyttää pelkät muuttujat mutta ei aja conaineria)
+
+# Muuttujien lukeminen erillisestä tiedostosta ja suoraan hostista
+- docker container run --env-file app.env alpine:latest (lukee muuttujat app.env) tiedostosta
+ App.env tiedoston sisältö
+  MYVAR=test
+  FOO=bar
+ - -e OTHERVAR (jos järjestelmässä on OTHERVAR niminen muuttuja, Docker lukee sen suoraan sieltä)
+ - Windowsissa muuttujia voidaan asettaa (https://www.shellhacks.com/windows-set-environment-variable-cmd-powershell/)
+   - Windows CMD: C:\> set VAR_NAME="VALUE"
+   - PS C:\> $env:VAR_NAME="VALUE"
+   
+ # PostGres palvelin ja muuttujat (tietokannan hallntajärjestelmä)
+ - docker container run --rm --name pg -d -e "POSTGRES_USER=myuser" -e "POSTGRES_PASSWORD=secret" postgres:9.6.6-alpine (muuttujat ajetaan komentona)
+ - docker container run --rm --name pg -d --env-file tiedoston_nimi "POSTGRES_PASSWORD=secret" postgres:9.6.6-alpine (muuttujat    ajetaan tiedostosta)
+ - docker container run --rm --link pg -it postgres:9.6.6-alpine psql -h pg -U myuser (kokeillaan yhteyttä toisesta kontista)
 
 
 
