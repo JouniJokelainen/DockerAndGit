@@ -152,3 +152,10 @@ volume:
 - docker container run -d --network mynet --network-alias webserver nginx:latest (luo 3 containerin webserver aliaksella)
 - docker container run --network mynet -it alpine:latest (käynnistää container samaan mynet verkkoon kuin edelliset)
 - nslookup webserver (listataan mynet verkossa samalla verkko aliaksella olevaa 3 webserver palvelinta)
+
+# Järjestelmämuuttujat / En vars
+- docker container run --name test -it -e "PS1=\h:\w# " jfahrer/myalpine:latest (muuttaa promptin näyttämään hostnimen ja työkansion)
+- export PS1="\h:\w# " (jos ajettaisiin erillisellä komennolla shellistä)
+
+
+
