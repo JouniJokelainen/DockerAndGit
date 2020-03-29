@@ -177,5 +177,10 @@ volume:
  - docker container run --rm --name pg -d --env-file tiedoston_nimi "POSTGRES_PASSWORD=secret" postgres:9.6.6-alpine (muuttujat    ajetaan tiedostosta)
  - docker container run --rm --link pg -it postgres:9.6.6-alpine psql -h pg -U myuser (kokeillaan yhteyttä toisesta kontista)
 
+# Kontti appi joka lukee/kirjoittaa PostGres tietokantaa
 
+ - ohjelma ensin täältä https://hub.docker.com/r/jfahrer/demo_web_app
+ - ohjelman vaatimat env tiedostot täältä https://github.com/learndocker/docker_examples/commit/4722202
+ - docker container run -d --name pg --env-file db.env postgres:9.6.6-alpine
+ - docker container run -d --link pg --env-file app.env -p 9292:9292 jfahrer/demo_web_app
 
