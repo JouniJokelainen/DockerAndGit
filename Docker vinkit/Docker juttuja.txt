@@ -88,7 +88,7 @@ Bindmount mäppää tietyn hakemiston isäntäkonelta ja vaatii absoluuttisen po
 - docker container run --rm -v ${PWD}:/var/www/html:ro -p 80:80 jounijokelainen/nginx:latest
 
 # Mount vs. volume tyyppinen bind
-docker container run --volume "$(pwd)/html":/usr/share/nginx/html:ro -p 80:80 nginx:latest
+docker container run --volume "$(pwd)/html":/usr/share/nginx/html:ro -p 80:80 nginx:latest (localostportti:konttiportti)
 docker container run --mount type=bind,src="$(pwd)/html",dst=/usr/share/nginx/html,readonly -p 80:80 nginx:latest
 
 # Mikä on volume: https://blog.container-solutions.com/understanding-volumes-docker
@@ -120,15 +120,15 @@ volume:
  - kopioitavat tiedostot voidaan ohittaa .dockerignorefile avulla
  
 # Container ja verkko
-- docker container run --publish (tai -p) 8080:80 -d nginx:latest (ohjaa kaikki verkkoliitännät)
+- docker container run --publish (tai -p) 8080:80 -d nginx:latest (ohjaa kaikki verkkoliitännät host 8080 portista kontin 80 porttiin)
 - docker container run --publish 127.0.0.1:80:80 -d nginx:latest (uudelleenohjaa ainaostaan localhostin)
 - ip addr (listaa ip asetukset linuxissa/containerissa)
 
 -docker container run -p 80-90:80-90 -d nginx:latest (uudelleen ohjaa kaikki portit väliltä 80-90 portteihin 80-90)
 
 # omat docker verkot
-- docker network ls (luo oman verkon)
-- docker network create mynet
+- docker network ls 
+- docker network create mynet (luo oman verkon)
 - docker network inspect mynet (näyttää uuden oman verkon ip-alueen ja muut asetukset)
 - docker container run --network mynet --rm -it alpine:latest (luo containerin ja liittää sen mynet verkkoon)
 - ip addr (komennolla voi listata ip osoitteet containerin sisällä)
