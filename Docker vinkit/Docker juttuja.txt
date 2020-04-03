@@ -185,4 +185,16 @@ volume:
  - ohjelman vaatimat env tiedostot täältä https://github.com/learndocker/docker_examples/commit/4722202
  - docker container run -d --name pg --env-file db.env postgres:9.6.6-alpine
  - docker container run -d --link pg --env-file app.env -p 9292:9292 jfahrer/demo_web_app
+ 
+# Learn DockerOnline - Scaling a web service: Scaling the app
+
+1. docker container run --network mydockernet --env-file db.env -v pgdata:/var/lib/postgresql/data -d --name pg postgres:9.6.6-alpine
+
+2. käynnistä webapp useamman kerran aliaksella 
+
+	docker container run -d --network mydockernet --network-alias webapp --env-file app.env jfahrer/demo_web_app:latest 
+	docker container run -d --network mydockernet --network-alias webapp --env-file app.env jfahrer/demo_web_app:latest 
+	docker container run -d --network mydockernet --network-alias webapp --env-file app.env jfahrer/demo_web_app:latest 
+
+3. docker container run --network mydockernet -e PROXY_UPSTREAM=webapp:9292 -d -p 80:80 --name lb jounijokelainen/lb:latest 
 
