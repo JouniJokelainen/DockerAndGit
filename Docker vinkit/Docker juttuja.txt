@@ -1,3 +1,5 @@
+# HUOM: kun luo tiedostoja Windows ympäristössä on huomattava vaihtaa rivinvaihto (EOL) asetukseen LF. Windowsissa EOL on CR LF. Asetukset voi vaihtaa Codessa statusbarista ala oikealta ja Notepad++ ohjelmassa Edit-EOL conversion - Linux valiosta.
+
 Imagen teko ilman tägiä kun työkansiossa on Dockerfile tiedosto
 
 docker image build .
