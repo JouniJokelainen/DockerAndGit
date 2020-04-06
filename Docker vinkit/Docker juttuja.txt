@@ -9,13 +9,17 @@
 - docker image 
 - docker container
 
-# Containereiden listaus
+# konttien listaus
 - docker ps (päällä olevat)
 - docker ps -a (kaikki)
 - docker container ls (päällä olevat)
 - docker container ls -a (kaikki)
 
-# Docker kontti komentoja (huom ei tarvise laitaa container osaa ollenkaan)
+# kaikkien päällä olevien konttien sulkeminen
+- docker stop $(docker ps -a -q)
+- docker rm $(docker ps -a -q)
+
+# Docker kontti komentoja (huom ei tarvise laittaa container osaa ollenkaan)
 - docker run image:tag (kontti käyntii ilman nimeä)
 - dokcer run -name nimi image:tag (kontti käyntiin omalla nimellä)
 - docker run -rm image (kontin poistaminen)
@@ -23,7 +27,6 @@
 - docker run -d -it image:tag (ajaminen irrotetussa moodissa niin että voidaan kiinnittyä konttiin)
 - docker attach kontin_id_tai_nimi
 - docker run -d -p 4000:4000 (ulkoinen portti:kontin portti)
-
 
 
 # HUOM: kun luo tiedostoja Windows ympäristössä on huomattava vaihtaa rivinvaihto (EOL) asetukseen LF. Windowsissa EOL on CR LF. Asetukset voi vaihtaa Codessa statusbarista ala oikealta ja Notepad++ ohjelmassa Edit-EOL conversion - Linux valiosta.
