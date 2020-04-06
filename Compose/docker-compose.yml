@@ -1,0 +1,15 @@
+version: '3.3'
+
+services:
+  web:
+    image: nginx:latest
+    #env_file: ./.windows.env
+    #env_file: C:/temp\Learn Docker Online/Compose/.windows.env
+    environment: 
+        - env_var_name=${COMPOSE_CONVERT_WINDOWS_PATHS}
+    # env_file: ./.windows.env
+    
+    ports:
+      - 80:80
+    volumes:
+      - .\html:/var/www/html/
