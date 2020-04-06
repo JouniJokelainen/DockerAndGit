@@ -1,0 +1,23 @@
+A)
+# Windowsissa polut (\ eikä /) voivat aiheuttaa ongelmia docker-compose.yml tiedostossa eli windowsissa oleva kansio ei bindmounttaa docker konttiin
+# Windows komentokehotteessa asetetaan muuttuja setx path komennolla COMPOSE_CONVERT_WINDOWS_PATHS arvoon yksi komennolla COMPOSE_CONVERT_WINDOWS_PATHS 1
+# Tämän jälkeen lisätään docker-compose.yml tiedoon muuttuja COMPOSE_CONVERT_WINDOWS_PATHS lisäämällä rivi env_var_name=${COMPOSE_CONVERT_WINDOWS_PATHS} (kts. alle)
+services:
+  web:
+    image: nginx:latest
+    #env_file: ./.windows.env
+    #env_file: C:/temp\Learn Docker Online/Compose/.windows.env
+    environment: 
+        - env_var_name=${COMPOSE_CONVERT_WINDOWS_PATHS}
+
+# Tämän jälkeen docker-compose up ei anna virhettä WARNING: The COMPOSE_CONVERT_WINDOWS_PATHS variable is not set. Defaulting to a blank string.
+# HUOM: Nginxsissä ohjeista poiketen tulee oma .\html kanso mountata /var/www/html eikä /usr/share/nginx/html kansioon
+volumes:
+      - .\html:/var/www/html/
+      
+B)
+# pitäisi olla myös mahdollista käyhttää .env nimistä tiedostoa samassa hakemistossa kuin docker-compose.yaml
+# tiedostoon asetetaan em. muuttuja arvoinen COMPOSE_CONVERT_WINDOWS_PATHS=1
+# on myös lisättävä alla näkyvä merkintä docker-compose.yaml tieostoon
+environment: 
+        - env_var_name=${COMPOSE_CONVERT_WINDOWS_PATHS}
