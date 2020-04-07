@@ -1,6 +1,6 @@
 A)
 # Windowsissa polut (\ eikä /) voivat aiheuttaa ongelmia docker-compose.yml tiedostossa eli windowsissa oleva kansio ei bindmounttaa docker konttiin
-# Windows komentokehotteessa asetetaan muuttuja setx path komennolla COMPOSE_CONVERT_WINDOWS_PATHS arvoon yksi komennolla SETX PATH COMPOSE_CONVERT_WINDOWS_PATHS 1
+# Windows komentokehotteessa asetetaan muuttuja setx path komennolla COMPOSE_CONVERT_WINDOWS_PATHS arvoon yksi komennolla SETX COMPOSE_CONVERT_WINDOWS_PATHS 1
 
 HUOM: kokeilujen jälkeen selvisi että  yllä näkyvä muuttjan lisääminen riittää
 HUOM2: Tosin polku nginx index sivuun on kuitenkin ./html:/var/www/html/ EIKÄ usr/share/nginx/html
