@@ -1,3 +1,16 @@
+Alla näkyvä toimii jahka muuttuja COMPOSE_CONVERT_WINDOWS_PATHS on asetettu setx komennolla arvoon 1.
+------------------------------------
+version: '3.3'
+
+services:
+  web:
+    image: nginx:latest
+    ports:
+      - 80:80
+    volumes:
+      - ./html:/var/www/html/
+
+-----------------------------------
 A)
 # Windowsissa polut (\ eikä /) voivat aiheuttaa ongelmia docker-compose.yml tiedostossa eli windowsissa oleva kansio ei bindmounttaa docker konttiin
 # Windows komentokehotteessa asetetaan muuttuja setx path komennolla COMPOSE_CONVERT_WINDOWS_PATHS arvoon yksi komennolla SETX COMPOSE_CONVERT_WINDOWS_PATHS 1
