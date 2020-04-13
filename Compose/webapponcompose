@@ -1,0 +1,3 @@
+pura zip-tiedostossa olevat tiedostot kansioon
+käynnistä ensin postgress tietokanta komennolla: docker-compose docker-compose up -d pg
+käynnistä vasta sitten webapp komennolla: docker-compose up -d webapp
