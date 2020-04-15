@@ -21,9 +21,9 @@
 
 # Docker kontti komentoja (huom ei tarvise laittaa container osaa ollenkaan)
 - docker run image:tag (kontti käyntii ilman nimeä)
-- dokcer run -name nimi image:tag (kontti käyntiin omalla nimellä)
+- dokcer run --name nimi image:tag (kontti käyntiin omalla nimellä)
 - docker run -rm image (kontin poistaminen)
-- cocker run -d image:tag (ajaminen irrotetussa/detached moodissa)
+- docker run -d image:tag (ajaminen irrotetussa/detached moodissa)
 - docker run -d -it image:tag (ajaminen irrotetussa moodissa niin että voidaan kiinnittyä konttiin)
 - docker attach kontin_id_tai_nimi
 - docker run -d -p 4000:4000 (ulkoinen portti:kontin portti)
