@@ -26,6 +26,23 @@ git help -a (näyttää lyhemmän apulistan)
 1. Siirry projektikansioon ja alusta Git komennolla 
 git init
 
+Git pushaaminen GitHub repositoryyn
+echo "## GettingStartedWithGit" >> README.md (luo GitHubia varten tarvittavan readme.md tiedoston)
+
+VisualCodessa em. tiedoson avaaminen. HUOM voisi laittaa Markdown preview laajunnuksen myös
+code . README.md
+
+Lisätään remote
+git remote add origin https://github.com/JouniJokelainen/GettingStartedWithGit.git
+
+Tarkastetaan remotet
+git remote -v
+git remote show origin
+
+Työnnetään data Githubiin
+git remote show origingit push origin master
+
+
 2. Tarkasta tiedostot ja kansiot joista git tietää komennolla
 git status
 
@@ -33,6 +50,8 @@ git status
 git add . = lisää kaikki  muuttuneet tiedostot
 git add tiedosto1.txt = lisää yhden tiedoston
 git add tiedosto1.txt tiedosto2.txt = lisää useamman tiedoston
+
+git reset tiedosto1.txt = poistaa indeksiin/staging areaan lisätyn tiedoston
 
 HUOM On myös komennot jotka lisäävät tiedostot myös git juurikansion alikansiosta (näyttää kyllä siltä että myös git . tekee sen?)
 git add --all
