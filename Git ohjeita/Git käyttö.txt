@@ -1,15 +1,27 @@
+Asennus: https://git-scm.com/download/win
+
 Kuinka luoda Git repository paikallisesti ja puskea se Githubiin
 
 Käyttöönottaminen
 
-1. Asenna git: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git
+1. Asenna git: https://git-scm.com/book/en/v2/Getting-Started-Installing-Git TAI
 
-2. Asetetaan Git käyttäjätiedot paikalliseen Git sovellukseen.
+2. Asetetaan Git käyttäjätiedot paikalliseen Git sovellukseen ja kaikkiin projekteihin
+git --version
 git config --global user.name "King Kong" 
 git config --global user.email "king-kong@gmail.com"
+git config user.name "King Kong"  (ilman global) asettaa tiedot vain ko. projektiin. Muut tulevat globalista
 
 3. Tarkastetaan edellä asetetut asetukset 
 git config --list
+git config user.name (näyttää käyttäjän)
+
+3.1 Ohjeistusta
+man git
+porcelain komennot ovat niitä yleisimpiä
+plumbing komennot ovat harvemmin käytettyjä, esim. skripteissä
+git help config (vie suoraan ko. osioon)
+git help -a (näyttää lyhemmän apulistan)
 
 1. Siirry projektikansioon ja alusta Git komennolla 
 git init
@@ -143,33 +155,3 @@ Haaraan tehtyjen muutosten yhdistäminen master branchiin
 Viimeisimmän muutokset peruminen
 
 git checkout -- *tiedostonnimi*
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
