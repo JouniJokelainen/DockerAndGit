@@ -1,6 +1,9 @@
 # Hyvä suomenkielinen ohjesivusto
 https://tkt-lapio.github.io/git/
 
+# commit viesteistä
+https://chris.beams.io/posts/git-commit/
+
 # Gitin oma aloitusohje sivusto
 https://docs.gitlab.com/ee/gitlab-basics/start-using-git.html
 
