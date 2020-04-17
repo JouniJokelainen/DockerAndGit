@@ -40,7 +40,8 @@ git remote -v
 git remote show origin
 
 Työnnetään data Githubiin
-git remote show origingit push origin master
+git remote show origin
+git push origin master
 
 
 2. Tarkasta tiedostot ja kansiot joista git tietää komennolla
