@@ -75,11 +75,17 @@ git commit -a -m "Do something once more"
 
 Korjaaminen:
 git add file-i-forgot-to-add.html
-git commit --amend -m "Add the remaining file"
+git commit --amend -m "Add the remaining file" (lisää edellä lisätyn tiedoston viimeisimpään committiin)
 
 Peruminen:
-
 git reset --soft HEAD^
+
+Git loki:
+git log
+git log -5 (näyttää 5 uusinta committia)
+git log --oneline (näyttää lyhyessä muodossa)
+git log --stat (näyttää tarkempaa tietoa commiteista)
+git log --patch (näyttää vielä enemmän kuin edellinen)
 
 Remote repositoryn GitHub käyttö
 
