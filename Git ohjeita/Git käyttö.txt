@@ -45,6 +45,7 @@ git remote show origingit push origin master
 
 2. Tarkasta tiedostot ja kansiot joista git tietää komennolla
 git status
+git status -s (näyttää tiedon lyhemmässä muodossa)
 
 3. Uusien ja muuttuneiden tiedostojen lisääminen indeksiin/staging areaan
 git add . = lisää kaikki  muuttuneet tiedostot
@@ -66,7 +67,7 @@ git rm --cached my-file.ts TAI git reset another-file.js
 6. Tehdään commit
 git commit -m "Add three files"
 
-7. Indeksiin lisääminen ja commit voidaan tehdä yhdellä komennolla
+7. Indeksiin lisääminen ja commit voidaan tehdä yhdellä komennolla (eli ohittaa add -a vaihe)
 git commit -a -m "Do something once more"
 
 8. Tiedoston lisääminen viimeisimpään committiin (head) tai koko viimesimmän commitin peruminen
