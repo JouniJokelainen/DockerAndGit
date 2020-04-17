@@ -1,0 +1,138 @@
+# COMMITIT
+commitit ovat .git\objects kansiossa ID:ä nimettyinä
+- git log (tulostaa ne)
+- git log -numero (tulostaa numeron verran committeja uusimmasta vanhimpaan)
+
+# GIT CAT-FILE *hash*
+# tulostaa commitin tiedot/metadatan ID:n perusteella
+- git cat-file -p b94c1b19bdc3ac37809f5663c8500ac17897acbb
+
+# sama komento tulostaa myös ns. tree hashin joka sisältää hashin josta löytyy commitiin viedyt tiedot
+
+git cat-file -p b94c1b19bdc3ac37809f5663c8500ac17897acbb
+->
+C:\temp\cookbook\.git>git cat-file -p b94c1b19bdc3ac37809f5663c8500ac17897acbb
+tree be4d5bfce489a2591e7fed5c672f9e52cd695a43
+author Jouni Jokelainen 
+committer Jouni Jokelainen 
+
+# Tulostaa varsinaiset tallennetut asiat
+# tästä voisi jatkaa git cat-file -p komennolla antamalla alla näkyvät hashit ja selvittää mitä niihin on tallennettu
+# blog tarkoittaa tiedoston sisältöä
+# tree on hakemistorakenne
+git cat-file -p be4d5bfce489a2591e7fed5c672f9e52cd695a43
+->
+100644 blob 23991897e13e47ed0adb91a0082c31c82fe0cbe5    menu.txt
+040000 tree 3ee76fde69b730530f1682f1f51789e89cf30500    recipes
+
+# HAARAT eli BRANCHIT
+# ovat .git kansiossa refs\heads alikansiossa
+# branch on viittaus committiin hashin avulla
+- git branch (näyttää branchit)
+- git branch lisa (lisää lisa nimisen haaran branch)
+
+# git branch komennon listaamissa haaroissa on työnalla oleva haara merkitty * merkillä
+# .git kansiossa oleva HEAD tiedosto sisältää tiedon työnalla/current haarasta eli on viittaus haaraan
+- type .git\head
+-> ref: refs/heads/master
+
+#checkout lisa vaihtaa haaran lisa nimiseen haaraan
+#ennen checkouttia kannattaa tehdä add ja commit että tiedot ovat tallessa kun työtilan sisältö muuttuu
+#head viittaus muuttuu ja working area eli tiedostot vastaavat lisa haaran luomisen aikaan vallinutta tilannetta
+- git checkout lisa
+- type .git\head
+-> ref: refs/heads/lisa
+
+# MERGE 
+# eli haarojen sisältämän tiedon yhdistäminen ja yhdistettyjen haarojen historian säilyttäminen
+- git checkout master (siirrytään takaisin master haaraan)
+- git merge lisa (yhdistää haaroissa olevat tiedot toisiinsa)
+-> voi aiheuttaa ristiriidan päällekkäisten ristiriitaisten tietojen takia
+->
+Auto-merging recipes/apple_pie.txt
+CONFLICT (content): Merge conflict in recipes/apple_pie.txt
+Automatic merge failed; fix conflicts and then commit the result.
+
+- git status antaa lisätietoa ristiriitaisuuksista
+
+Apple Pie
+
+pre-made pastry
+1/2 cup butter
+3 tablespoons flour
+<<<<<<< HEAD
+1 cup sugar
+8 Granny Smith apples
+=======
+1 tbsp cinnamon
+20 Granny Smith apples
+>>>>>>> lisa
+
+-> ristiriitaisuudet/päällekkäisyydet tulee korjata
+
+-git status (näyttää onko korjattu)
+-git add . lisätään korjattu tiedosto seuraavaan commitiin
+-git merge (hyväksytään oletus viesti poistumalla editorista)
+
+# mergen jälkeen viimeisimmällä commitilla on kaksi parent committia
+# jos merge antaa ilmoituksen FASTFORWARD, ei uutta committia tarvittun tehdä vaan siirrettiin pelkästään työnalla olevan haaran HEAD tilannetta vastaavaan jo olemassa olevaan committiin.
+
+# checkoutin voi tehdä myös suoraan committiin(ei haaraan) jolloin joudutaan ns. Detached head/HEADLESS tilaan
+# jos sillon tehdään muutoksia ja siirrytään taas checkout MASTER komennolla MASTER haaraan, muutokset hylätään
+# jos tiedot halutaan laittaa "jemmaan" oon niistä tehtävä uusi branch git branch nimi komennolla ja mahdollisesti siirrittyvä takaisin MASTERIIN
+- git branch
+-> * (HEAD detached at 55b2f0d)
+  lisa
+  master
+
+# REBASE
+# REBASE tekee periaatteessa samaa kuin merge mutta se itseasiasssa luo käytössä olevan haaran commiteista kopiot (uudet commitit) ja laittaa ne MASTER haaran jatkoksi.
+# REBASE kirjoittaa commit historian ns. uusiksi koska se yhdistää kahden haaran commitit
+# MERGE  säilyttää molempien haarojen historian mutta yhdistää vain datan
+# REBASE saattaa aiheuttaa ongelmia esim. githubin kanssa joten tee mieluummin MERGE jos epäilet
+# älä ikinä suorita REBASE komentoa jos paikallinen repo on yhdistetty jaettuun etärepoon
+- git rebase master
+
+# TAGit , niiden avulla voidaan merkitä tietty kohta/commit branch historiassa. Tag ei siirry uuden commitin mukana
+git tag -a v1.0 -m "Release Version 1.0"
+git tag v1.0
+
+# repositoryn pullaaminen githubista, tosin vain MASTER repositoryn
+# tuo myös historian
+# local vs remote
+# asetukset ovat .git/config tiedostossa
+
+-git clone https://github.com/käyttäjä/repositoryn_nimi.git
+->   
+- git branch --all näyttää kaikki haarat, myös etä eli origin master
+- git show-ref master (master on hakusana ja siinä voi käyttää siis haaran nimeä jota hakee) näyttää kaikki masterit, eli paikallisen ja remoten ja ne niiden pitäisi hashin perusteella osoittaa samaan kommittiin.
+
+# PUSH
+- git push (puskee paikallisen repon commitit ja historian remoteen)
+- git show master (näyttää tämän koska molempien master haarojen hash viittaa samaan committiin)
+
+# FETCH
+# jos etärepoon tulee committeja myös muilta kuin itseltä ei PUSH:a kannatta pakottaa -f parametrin avulla
+# tämä sekoittaa muiden käyttäjien commit historina etärepon ja heidän paikallisen välillä
+# täytyy ensin suorittaa fetch ja sitten merge ja tämän jälkeen push
+# GIT PULL hoitaa itse asiassa FETCH+MERGE komentoparin 
+- git fetch
+- git merge (ja mahdollisten konfliktien ratkaisu)
+- git push
+
+# PULL
+# GIT PULL komento tekee itseasiassa edellisen FETCH + MERGE komentoparin
+
+# FORK
+# on Githubin ominaisuus joka kopio toisen Git repositoryssä olevan repository (meillä ei kirjoitusoikeutta) omaan Github repositoryyn
+# Oman forkatun repon voi sitten kloonata paikalliselle koneelle
+
+# UPSTREAM repo
+# Forkatusta reposta omalle koneelle kloonattuun repoon voidaan yhdistää alkuperäinen repo githubissa
+# Tämä on ns. Upstream. Tämä mahdollistaa alkuperäiseen repoon tulevien muutosten pullaamisen omaan paikalliseen repoon ja sitten niiden pushaamisen omaan Github repoon
+# omaan paikalliseen repoon tehtyjä muutoksia ei voi pushata alkuperäiseen etärepoon vaan täytyy tehdä ns. pull request
+
+# PULL REGUEST
+# On viesti alkuperäisen repon haltijalle että halutessaan hän voi ns remote pullata muutokset meiltä omaan Github repoon
+
+
