@@ -27,6 +27,7 @@ https://classroom.udacity.com/courses/ud123
 
 # Learn Git In 15 Minutes
 https://www.youtube.com/watch?v=USjZcfj8yxE&t=494s
+
 # ja siihen liittyvä ohjeistus
 https://www.notion.so/Introduction-to-Git-ac396a0697704709a12b6a0e545db049
 
@@ -60,4 +61,8 @@ git checkout -- filename
 
 Git pull reguest
 https://opensource.com/article/19/7/create-pull-request-github
+
+# Suomenkielisiä ohjeita
+https://markuspyharanta.com/2019/03/11/git-windows-10-asennus-ja-kaytto/
+https://www.cs.helsinki.fi/u/mikahutt/oh/Git-ohje.pdf
 
