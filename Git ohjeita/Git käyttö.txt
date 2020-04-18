@@ -85,6 +85,11 @@ git reset --soft HEAD~1 (laittaa viimeiseksi commituidut tiedot takaisin staging
 git reset --mixed tai pelkkä git reset (laittaa viimeiset commituidut muutokset takaisin työkansioon)
 git reset --hard HEAD~1 (laittaa viimeiset commituidut muutokset roskiin)
 
+git checkout [revision_hash] [file_name]
+HEAD - Points to the Last Commit on the current repository;
+HEAD^ - Last Commit - 1;
+HEAD^^ - Last Commit - 2;
+HEAD~10 - 10 commits behind of HEAD;
 
 Git loki:
 git log
