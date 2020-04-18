@@ -40,18 +40,24 @@ https://stackoverflow.com/questions/5697750/what-exactly-does-the-u-do-git-push-
 Find the specific commit you want to revert all changes to:
 
 $ git log --oneline
+
 Rollback all changes to that old commit:
 
 $ git checkout be9055b .
 
 Note: The dot (.) after the branch name is mandatory.
+
 Add the changes to the staging area and commit them:
 
 $ git add -A $ git commit -m "Revert commit: be9055b"
+
 Once the local rollback is done, you can revert the already pushed commits, by pushing a new revision with the reverted changes to the remote Git repository:
 
 $ git push
 
 # viimeisimmän lisäyksen peruminen jos committia ei vielä ole tehty
 git checkout -- filename
+
+Git pull reguest
+https://opensource.com/article/19/7/create-pull-request-github
 
