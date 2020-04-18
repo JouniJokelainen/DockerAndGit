@@ -91,8 +91,12 @@ HEAD^ - Last Commit - 1;
 HEAD^^ - Last Commit - 2;
 HEAD~10 - 10 commits behind of HEAD;
 
-Peruminen revert - poistaa muutokset mutta ei muuta commit historiaa kuten reset (hyvä jos julkaistu remoteen joka on muidenkin käytössä)
-git revert *hashjohonperutaan*
+Peruminen revert - poistaa muutokset mutta ei muuta commit historiaa kuten reset (hyvä jos julkaistu remoteen joka on muidenkin käytössä) - peruu vain ko. commitissa olevat muutokset, eivät sen jälkeen tehtyjä.
+git revert *hashjokaperutaan*
+
+Palaaminen tiettyyn commitiiin väliaikaisesti. Voidaan vaikka laittaa tiedostoja stashiin tai kopioida muualla työkansiosta.
+git checkout hashjossakäydään (mennään hetkeksi aiempaan commitiin)
+git checkout master (palataan viimeisimpään commitiin)
 
 Git loki:
 git log
