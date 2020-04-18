@@ -16,6 +16,9 @@ git config user.name "King Kong"  (ilman global) asettaa tiedot vain ko. projekt
 git config --list
 git config user.name (näyttää käyttäjän)
 
+Git voidaan asettaa muistamaan salasana
+git config --global credential.helper "cache --timeout 3600" (sekunneissa = 1 t.)
+
 3.1 Ohjeistusta
 man git
 porcelain komennot ovat niitä yleisimpiä
