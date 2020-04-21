@@ -39,16 +39,15 @@ echo "## GettingStartedWithGit" >> README.md (luo GitHubia varten tarvittavan re
 VisualCodessa em. tiedoson avaaminen. HUOM voisi laittaa Markdown preview laajunnuksen myös
 code . README.md
 
-Lisätään remote
-git remote add origin https://github.com/JouniJokelainen/GettingStartedWithGit.git
+# Lisätään remote
+git remote add origin https://github.com/JouniJokelainen/GettingStartedWithGit.git (origin on remoten nimi joka voi olla muutakin)
 
-Tarkastetaan remotet
+# Tarkastetaan remotet
 git remote -v
-git remote show origin
+git remote show origin 
 
-Työnnetään data Githubiin
-git remote show origin
-git push origin master
+# Työnnetään data Githubiin
+git push -u origin master
 
 
 2. Tarkasta tiedostot ja kansiot joista git tietää komennolla
@@ -76,6 +75,8 @@ git rm --cached my-file.ts TAI git reset another-file.js (poistaa vain indeksist
 6. Tehdään commit
 git commit -m "Add three files"
 git commit (ilman m parametria päästään kirjoittamaan pidempi viesti)
+
+git show commitidnumero | kertoo mitä muutoksia commitissa on
 
 7. Indeksiin lisääminen ja commit voidaan tehdä yhdellä komennolla (eli ohittaa add -a vaihe)
 Toimii vain niiden tiedostojen kohdalla joita jo seurataan
@@ -216,14 +217,19 @@ Viimeisimmän muutokset peruminen
 git checkout -- *tiedostonnimi*
 
 # Git Stash ja Git stash pop
-Jos tilanne on ns. vaiheessa ja pitää vaihtaa toiseen branchiin mutta ei kuitenkaan halua commitoida
-Git stash vie jemmaan viimeisimmän commitin jälkeen tapahtuneet muutokset (indeksissä/staged arealla olevat ja ne jotka siellä eivät ole). Nyt voi taas vapaasti commitoida
+Jos tilanne on ns. vaiheessa ja pitää vaihtaa toiseen branchiin mutta ei kuitenkaan halua/voida commitoida
+
+Git stash vie jemmaan viimeisimmän commitin jälkeen tapahtuneet muutokset (indeksissä/staged arealla olevat ja ne jotka siellä eivät ole). Nyt voi taas vapaasti commitoida ja esim pullata remote
+Stashiin voi viedä tietoa monta kertaa ja valita sitten listalta (git stash list) mitä tuo (git apply stash stash@{0})
 Stashissa olevat tiedostot eivät mene pushin mukana remoteen
     
-    git stash (vie tiedostot stashiin)
-    git stash pop (tuo tiedostot stashistä)
-    git stash list (listaa stashissä olevat tiedostot)
+    git stash (vie tiedostot ja työtilan stashiin)
+    git stash pop (tuo tiedostot ja työtilan stashistä)
+    git stash list (listaa kaikki stashit)
     git stash show (listaa stashissä olevat tiedostot)
+    git stash -u (ottaa mukaan myös untracked tiedostot)
+    git stash list (näyttää kaikki stashit)
+    git apply stash stash@{0} (tuo listalta valitun stashin työtilaan)
     
  # tag | tägit
  On erikseen merkitty hetki commit historiassa
