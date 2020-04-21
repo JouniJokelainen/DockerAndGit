@@ -11,6 +11,8 @@ git --version
 git config --global user.name "King Kong" 
 git config --global user.email "king-kong@gmail.com"
 git config user.name "King Kong"  (ilman global) asettaa tiedot vain ko. projektiin. Muut tulevat globalista
+git config --global core.editor "code -wait --new-window" (asetetaan Visual Studio Code default editoriksi)
+git config --edit --global (avataan asetukset editoriin)
 
 3. Tarkastetaan edellä asetetut asetukset 
 git config --list
@@ -21,6 +23,8 @@ git config --global credential.helper "cache --timeout 3600" (sekunneissa = 1 t.
 
 3.1 Ohjeistusta
 man git
+git --help
+git --help commit
 porcelain komennot ovat niitä yleisimpiä
 plumbing komennot ovat harvemmin käytettyjä, esim. skripteissä
 git help config (vie suoraan ko. osioon)
@@ -94,24 +98,26 @@ HEAD^ - Last Commit - 1;
 HEAD^^ - Last Commit - 2;
 HEAD~10 - 10 commits behind of HEAD;
 
-Peruminen revert - poistaa muutokset mutta ei muuta commit historiaa kuten reset (hyvä jos julkaistu remoteen joka on muidenkin käytössä) - peruu vain ko. commitissa olevat muutokset, eivät sen jälkeen tehtyjä.
+# Peruminen revert - poistaa muutokset mutta ei muuta commit historiaa kuten reset (hyvä jos julkaistu remoteen joka on muidenkin käytössä) - peruu vain ko. commitissa olevat muutokset, eivät sen jälkeen tehtyjä.
 git revert *hashjokaperutaan*
 
-Palaaminen tiettyyn commitiiin väliaikaisesti. Voidaan vaikka laittaa tiedostoja stashiin tai kopioida muualla työkansiosta.
+# Palaaminen tiettyyn commitiiin väliaikaisesti. Voidaan vaikka laittaa tiedostoja stashiin tai kopioida muualla työkansiosta.
 git checkout hashjossakäydään (mennään hetkeksi aiempaan commitiin)
 git checkout master (palataan viimeisimpään commitiin)
 
-Git loki:
+# Git loki:
 git log
 git log -5 (näyttää 5 uusinta committia)
 git log --oneline (näyttää lyhyessä muodossa)
 git log --stat (näyttää tarkempaa tietoa commiteista)
 git log --patch (näyttää vielä enemmän kuin edellinen)
+git log --oneline --graph --decorate --all (näyttää grafiikalla haarautumat)
+
 
 Uudelleen nimeäminen
 git mv tiedostonvanhanimi.txt tiedostonuusinimi.txt
 
-Remote repositoryn GitHub käyttö
+# Remote repositoryn GitHub käyttö
 
 1. luodaan tarvittaessa uusi Github tunnus ja sinne repository sekä kopioidaan .git linkki talteen
 
@@ -215,3 +221,11 @@ Stashissa olevat tiedostot eivät mene pushin mukana remoteen
     git stash pop (tuo tiedostot stashistä)
     git stash list (listaa stashissä olevat tiedostot)
     git stash show (listaa stashissä olevat tiedostot)
+    
+ # tag | tägit
+ On erikseen merkitty hetki commit historiassa
+ 
+    git tag (näyttää tagit)
+    git tag stable master (tägää viimeisimmän master commitin stable tagillä, tagin viesti on commitin viesti)
+    git tag -a v0.1 -m "0.1 Release" 336192 (tekee annotated tyyppisen, eli voi sisältää enemmän infoa tägin tiettyyn häshillä merkittyyn commitiin)
+    git push --tags (puskee tägit githubiin, ilman --tags ei mene)
