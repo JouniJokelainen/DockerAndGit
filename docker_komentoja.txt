@@ -3,6 +3,13 @@ Dockerin toiminnan varmistaminen:
 docker container run hello-world
 docker run hello-world
 
+# Imaget
+docker image pull alpine:latest
+docker images
+docker image ls
+docker images -f dangling=true                  = luettelee ns. dangling imaget
+docker rmi $(docker images -f dangling=true -q) = poistaa ns. dangling imaget
+
 Shellin ajaminen
 
 docker run alpine:latest -it sh				= interaktiivinen shell
