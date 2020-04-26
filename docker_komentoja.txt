@@ -36,12 +36,49 @@ CTRL + Q
 # Containerin listaaminen
 docker container ls	= vain päällä olevat
 docker container ls -a 	= kaikki
+docker container ls -a -n5        = näyttää 5 viimeisintä
 
 # kaikkien sammutettujen konttien poistaminen
 docker container prune
 
 # Koko järjestelmän siivoaminen
 docker system prune
+
+# Konttien tuominen ja vieminen
+https://sysadminnightmare.org/docker-save-load-import-export-commit/  
+
+1. Kontin vieminen imageksi
+docker commit *imageID* image-from-stagged-build
+
+2. Imagen tallentaminen .tar tiedostoksi joka voidaan viedä toiselle koneelle
+docker save image-from-stagged-build > image-from-stagged-build.tar
+
+3. Imagen lataaminen .tar tiedostosta
+docker load < image-from-stagged-build.tar
+
+4. Uusi kontti tuodusta imagesta
+docker run --name ngixfromstagged -d -p 8080:80 image-from-stagged-build
+
+-------------------------------------
+
+Windows:
+To export:
+docker container export <container_id> -o <image_name>.tar
+
+To import
+docker image import <image_name>.tar <custom_image_name>
+
+Please note in Windows use -o instead of >. The export done with > works with Linux/MAC only.
+
+Linux
+To export:
+docker container export <container_id> > <image_name>.tar
+
+To import
+docker image import <image_name>.tar <custom_image_name>
+
+Please note in Windows use -o instead of >. The export done with > works with Linux/MAC only.
+
 
 https://docs.docker.com/engine/userguide/
 
