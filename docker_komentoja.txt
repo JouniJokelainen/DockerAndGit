@@ -1,0 +1,33 @@
+Dockerin toiminnan varmistaminen:
+
+docker container run hello-world
+docker run hello-world
+
+Shellin ajaminen
+
+docker run alpine:latest -it sh				= interaktiivinen shell
+docker container run --name nimialpine:latest -it sh	= interaktiivinen shell ja nimi
+docker container run --rm -it alpine sh	= nimeäminen	= kontin automaattinen poistaminen poistumisen jälkeen
+
+# cat /etc/os-release = versio
+# uname -r = host name joka on kernelin versio
+
+Poistuminen ja kontin lopetus
+CTRL + D
+exit komento
+
+Poistuminen ilman että kontti menee kiinni
+CTRL + P
+
+Kiinnittyminen konttiin
+docker container attach nimi/ID
+CTRL + Q
+
+Containerin listaaminen
+docker container ls	= vain päällä olevat
+docker container ls -a 	= kaikki
+
+https://docs.docker.com/engine/userguide/
+
+
+
