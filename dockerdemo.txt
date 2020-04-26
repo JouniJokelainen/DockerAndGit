@@ -1,0 +1,53 @@
+# Dockerin toiminnan testaaminen
+
+docker container run hello-world
+docker run hello-world
+
+-------------------------------------
+
+# Alpine linuxin käynnistäminen kontissa
+
+docker container run -it alpine:latest sh
+
+-------------------------------------
+# index.html dockerdemo/src kansiossa
+# src kansiossa oleva index.html mountataan konttiin jatkossa
+
+<h1>NGINX from Docker</h1>
+<p>Moikka kontista!</p>
+
+--------------------------------------
+# Dockerfile dockerdemo kansiossa:
+
+FROM nginx:latest
+RUN apt-get update
+COPY /src /var/www/html/
+EXPOSE 80
+
+--------------------------------------
+# Stagged Dockerfile:
+
+FROM nginx:latest as build1
+RUN apt-get update
+
+FROM build1 as build2
+COPY /src /var/www/html
+RUN echo "<p> Hello from build2</p>" >> /var/www/html/index.html
+
+EXPOSE 80
+
+-------------------------
+# Oman imagen rakentaminen em. Dockerfilen pohjalta
+
+1. docker build -t nginx-oma .
+2. docker run --name nginx-oma -d --rm -p 8080:80 nginx-oma
+
+--------------------------
+# index.html tiedoston tulostaminen cat komennolla nginx kontista
+
+docker container exec nginx-oma cat /usr/share/nginx/html/index.html
+
+---------------------------
+# Nginx bash shellin käynnistäminen em. nginx kontissa
+docker container exec -it nginx-oma sh
+
