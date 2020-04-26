@@ -26,7 +26,7 @@
 - docker run -d image:tag (ajaminen irrotetussa/detached moodissa)
 - docker run -d -it image:tag (ajaminen irrotetussa moodissa niin että voidaan kiinnittyä konttiin)
 - docker attach kontin_id_tai_nimi
-- docker run -d -p 4000:4000 (ulkoinen portti:kontin portti)
+- docker run -d -p 4000:4000 image:tag (ulkoinen portti:kontin portti)
 
 
 # HUOM: kun luo tiedostoja Windows ympäristössä on huomattava vaihtaa rivinvaihto (EOL) asetukseen LF. Windowsissa EOL on CR LF. Asetukset voi vaihtaa Codessa statusbarista ala oikealta ja Notepad++ ohjelmassa Edit-EOL conversion - Linux valiosta.
@@ -56,7 +56,8 @@ docker image push:
 
 HUOM: pitää olla kirjautuneena Dockerhubiin
 
-- docker image push dockerhubkäyttäjänimi/myalpine:latest
+- docker tag 3776b7ef639a jounijokelainen/nginx-staged-build (ensin image täytyy tägätä dockerhubiin)
+- docker image push jounijokelainen/nginx-staged-build (sitten voi puske hubiin)
 
 Containerin suorittaminen interaktiivisesti:
 
@@ -229,3 +230,17 @@ volume:
 
 3. docker container run --network mydockernet -e PROXY_UPSTREAM=webapp:9292 -d -p 80:80 --name lb jounijokelainen/lb:latest 
 
+# Konttien/imegejen tuominen ja vieminen tiedostoksi
+(https://sysadminnightmare.org/docker-save-load-import-export-commit/)  
+
+A) Kontin vieminen imageksi
+docker commit *imageID* image-from-stagged-build
+
+B) Imagen tallentaminen .tar tiedostoksi joka voidaan viedä toiselle koneelle
+docker save image-from-stagged-build > image-from-stagged-build.tar
+
+C) Imagen lataaminen .tar tiedostosta
+docker load < image-from-stagged-build.tar
+
+4. Uusi kontti tuodusta imagesta
+D) docker run --name ngixfromstagged -d -p 8080:80 image-from-stagged-build
