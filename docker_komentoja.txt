@@ -8,31 +8,40 @@ docker image pull alpine:latest
 docker images
 docker image ls
 docker images -f dangling=true                  = luettelee ns. dangling imaget
+docker image prune = poistaa dangling images
+docker image prune -a = poistaa kaikki käyttämättömät imaget
 docker rmi $(docker images -f dangling=true -q) = poistaa ns. dangling imaget
 
-Shellin ajaminen
+# Shellin ajaminen
 
 docker run alpine:latest -it sh				= interaktiivinen shell
 docker container run --name nimialpine:latest -it sh	= interaktiivinen shell ja nimi
 docker container run --rm -it alpine sh	= nimeäminen	= kontin automaattinen poistaminen poistumisen jälkeen
 
-# cat /etc/os-release = versio
-# uname -r = host name joka on kernelin versio
+Tietoja kontin sisällä ollessa
+cat /etc/os-release = versio
+uname -r = host name joka on kernelin versio
 
-Poistuminen ja kontin lopetus
+# Poistuminen ja kontin lopetus
 CTRL + D
 exit komento
 
-Poistuminen ilman että kontti menee kiinni
+# Poistuminen ilman että kontti menee kiinni
 CTRL + P
 
-Kiinnittyminen konttiin
+# Kiinnittyminen konttiin
 docker container attach nimi/ID
 CTRL + Q
 
-Containerin listaaminen
+# Containerin listaaminen
 docker container ls	= vain päällä olevat
 docker container ls -a 	= kaikki
+
+# kaikkien sammutettujen konttien poistaminen
+docker container prune
+
+# Koko järjestelmän siivoaminen
+docker system prune
 
 https://docs.docker.com/engine/userguide/
 
