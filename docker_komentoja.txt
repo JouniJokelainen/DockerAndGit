@@ -33,6 +33,9 @@ CTRL + P
 docker container attach nimi/ID
 CTRL + Q
 
+# kontin käynnistäminen sammutetusta tilasta
+docker container start -i *ID*
+
 # Containerin listaaminen
 docker container ls	= vain päällä olevat
 docker container ls -a 	= kaikki
