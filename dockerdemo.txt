@@ -26,8 +26,8 @@ EXPOSE 80
 ---------------------------------------
 # Dynaaminen index.html
 
-docker run -p 8080:80 -v C:\temp\dockere\src\:/var/www/html nginx-oma
-
+docker run --name nginxserver -p 8080:80 -d -rm -v C:\temp\dockere\src\:/var/www/html nginx-oma
+docker run --name nginxserver -p 8080:80 -d -rm --volume"$(pwd)/html":/usr/share/
 --------------------------------------
 # Stagged Dockerfile:
 
