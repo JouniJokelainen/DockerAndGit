@@ -244,3 +244,6 @@ docker load < image-from-stagged-build.tar
 
 4. Uusi kontti tuodusta imagesta
 D) docker run --name ngixfromstagged -d -p 8080:80 image-from-stagged-build
+
+# Tiedoston kopioiminen päällä olevasta kontista paikalliseen tiedostojärjestelmään
+docker cp "1.8:/mydir/Imgur-JY5tHqr.mp4" . (jossa siis 1.8 on kontti ja . paikallinen kansio)
