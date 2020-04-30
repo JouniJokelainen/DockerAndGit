@@ -20,6 +20,7 @@
 - docker rm $(docker ps -a -q)
 
 # Docker kontti komentoja (huom ei tarvise laittaa container osaa ollenkaan)
+- docker pull image:tag (lataa imagen)
 - docker run image:tag (kontti käyntii ilman nimeä)
 - dokcer run --name nimi image:tag (kontti käyntiin omalla nimellä)
 - docker run -rm image (kontin poistaminen)
