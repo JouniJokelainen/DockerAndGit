@@ -1,3 +1,8 @@
+# Jos käytössä on Docker Desktop for Windows, tulee asettaa alla näkyvä muuttuja paikoilleen 
+sillä muutoin tulee ongelmia volumen kanssa
+
+SETX COMPOSE_CONVERT_WINDOWS_PATHS 1
+
 # Dockerin toiminnan testaaminen
 
 docker container run hello-world
@@ -27,8 +32,10 @@ EXPOSE 80
 ---------------------------------------
 # Dynaaminen index.html
 
-docker run --name nginxserver -p 8080:80 -d -rm -v C:\temp\dockere\src\:/var/www/html nginx-oma
-docker run --name nginxserver -p 8080:80 -d -rm --volume"$(pwd)/html":/usr/share/
+docker run --name nginxserver -p 8080:80 -d --rm -v C:\temp\docker\src\:/var/www/html nginx-oma
+docker run --name nginxserver -p 8080:80 -d --rm --volume"$(pwd)/html":/usr/share/
+docker run --name nginxserver -p 8080:80 -d --rm -v "$(pwd)/src:/usr/share/nginx/html nginx-oma (ubuntusta)
+docker run --name nginxserver -p 8080:80 -d --rm -v "${pwd}/src:/usr/share/nginx/html nginx-oma (poweshellistä)
 --------------------------------------
 # Stagged Dockerfile:
 
