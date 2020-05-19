@@ -22,6 +22,7 @@ docker container run -it alpine:latest sh
 FROM nginx:latest
 RUN apt-get update
 COPY /src /var/www/html/
+COPY /src /usr/share/nginx/html
 EXPOSE 80
 ---------------------------------------
 # Dynaaminen index.html
